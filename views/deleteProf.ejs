@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/editSearch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Delete Prof</title>
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+<!------------------content container--------------------->
+<p class="heading">SEARCH FOR PROF</p>
+<div class="container">
+    <div class="search-container">
+        <form action="/deleteSearch/results" method="post">
+          <input type="text" placeholder="Search prof to delete" name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+
+      <% if(load == 0){ %>  
+        <% prof_profile.forEach(function(prof){ %>  
+        <div class="result-container">
+            <a href="/removeProf/<%= prof.id %>" class="postcontain">
+                <div class="post-head">
+                    <p class="prof-name"><%= prof.name %></p>
+                    <p> College: <%= prof.college %></p>
+                    <p>Department: <%= prof.department %> </p>
+                </div>
+            </a>
+        </div>
+        <% }); %>
+    <% }; %>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
+<script src="/javascript/admin_page.js"></script>  
+</body>
+
+</html>

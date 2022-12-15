@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addProf.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add Prof</title>
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+<!------------------content container--------------------->
+<p class="heading">ADD A PROF</p>
+<div class="container">
+    <!------------------post container--------------------->
+    <% if(isEqual == 0){ %>
+        <div class="error-message">  
+            <p>Number of courses and courses name are not the same</p>
+        </div>
+    <% }  %>
+    <form action="/addProf" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="Name" required>
+
+        <div class="input_fields_wrap">
+            <label for="courses">Courses</label>
+            <button class="add_field_button">Add another course</button>
+            <input type="text" name="courses[]" placeholder="Courses" required>
+        </div>
+
+        <div class="input-fields-wrap">
+            <label for="courses_name">Courses Name (Enter courses name in the same order as the courses were entered)</label>
+            <button class="add-field-button">Add another course name</button>
+            <input type="text" name="courses_name[]" placeholder="Courses Name" required>
+        </div>
+    
+        <label for="college">College</label>
+        <select name="college">
+            <% colleges.forEach(function(college){ %>  
+                    <option><%= college.college %></option>
+            <% }); %>
+        </select>
+
+        <label for="department">Department</label>
+        <select name="department">
+            <% for(let i = 0; i < colleges[0].departments.length; i++){ %>  
+                <option class="<%= colleges[0].college %>"><%= colleges[0].departments[i] %></option>
+            <% } %>
+
+            <% for(let i = 0; i < colleges[1].departments.length; i++){ %>  
+                    <option class="<%= colleges[1].college %>"><%= colleges[1].departments[i] %></option>
+            <% } %>
+
+            <% for(let i = 0; i < colleges[2].departments.length; i++){ %>  
+                <option class="<%= colleges[2].college %>"><%= colleges[2].departments[i] %></option>
+            <% } %>
+
+            <% for(let i = 0; i < colleges[3].departments.length; i++){ %>  
+                <option class="<%= colleges[3].college %>"><%= colleges[3].departments[i] %></option>
+            <% } %>
+
+            <% for(let i = 0; i < colleges[4].departments.length; i++){ %>  
+                <option class="<%= colleges[4].college %>"><%= colleges[4].departments[i] %></option>
+            <% } %>
+
+            <% for(let i = 0; i < colleges[5].departments.length; i++){ %>  
+                <option class="<%= colleges[5].college %>"><%= colleges[5].departments[i] %></option>
+            <% } %>
+
+            <% for(let i = 0; i < colleges[6].departments.length; i++){ %>  
+                <option class="<%= colleges[6].college %>"><%= colleges[6].departments[i] %></option>
+            <% } %>
+        </select>
+      
+        <input type="submit" value="Submit">
+      </form>
+    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
+<script src="/javascript/admin_page.js"></script>  
+</body>
+
+
+
+</html>

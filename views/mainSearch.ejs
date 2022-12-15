@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/editSearch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Search</title>
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+<!------------------content container--------------------->
+<div class="container">
+
+    <% if(prof_courses.length != 0){ %>  
+        <p class="prof-heading">LIST OF PROFS WITH &ldquo;<%= search %>&rdquo; COURSES</p>
+        <% prof_courses.forEach(function(prof){ %>  
+        <div class="result-container">
+            <a href="/profPage/<%= prof.id %>" class="postcontain">
+                <div class="post-head">
+                    <p class="prof-name"><%= prof.name %></p>
+                    <p> College: <%= prof.college %></p>
+                    <p>Department: <%= prof.department %> </p>
+                </div>
+            </a>
+        </div>
+        <% }); %>
+    <% }; %>
+
+      <% if(prof_profile.length != 0){ %>  
+        <p class="prof-heading">LIST OF PROFS WITH &ldquo;<%= search %>&rdquo;</p>
+        <% prof_profile.forEach(function(prof){ %>  
+        <div class="result-container">
+            <a href="/profPage/<%= prof.id %>" class="postcontain">
+                <div class="post-head">
+                    <p class="prof-name"><%= prof.name %></p>
+                    <p> College: <%= prof.college %></p>
+                    <p>Department: <%= prof.department %> </p>
+                </div>
+            </a>
+        </div>
+        <% }); %>
+    <% }; %>
+
+    <% if(users.length != 0){ %>  
+        <p class="prof-heading">LIST OF USERS WITH &ldquo;<%= search %>&rdquo;</p>
+        <% users.forEach(function(user_res){ %>  
+        <div class="result-container">
+            <a href="/profile/<%= user_res.id %>" class="postcontain">
+                <div class="post-head">
+                    <p class="prof-name"><%= user_res.username %></p>
+                </div>
+            </a>
+        </div>
+        <% }); %>
+    <% }; %>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
+<script src="/javascript/admin_page.js"></script>  
+</body>
+
+</html>

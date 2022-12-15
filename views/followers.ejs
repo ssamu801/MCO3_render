@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/editSearch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Search</title>
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+<!------------------content container--------------------->
+<div class="container">
+
+    <% if(user_profile.followers.length == 0){ %>  
+        <p class="prof-heading">This user does not have followers yet.</p>
+    <% }; %>
+
+    <% if(user_profile.followers.length != 0){ %>  
+        <p class="prof-heading"><%= user_profile.username %>'s FOLLOWERS</p>
+        <% user_profile.followers.forEach(function(followers){ %>  
+        <div class="result-container">
+            <a href="/profile/<%= followers.userID %>" class="postcontain">
+                <div class="post-head">
+                    <p class="prof-name"><%= followers.username %></p>
+                </div>
+            </a>
+        </div>
+        <% }); %>
+    <% }; %>
+     
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
+<script src="/javascript/admin_page.js"></script>  
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="all" href="/css/prof_list.css">      
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Computer Technology Profs</title>
+
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+
+    <div class="search-container">
+        <% if(prof_profile.length != 0){ %>
+        <form action="/profResults/<%= prof_profile[0].college %>/<%= prof_profile[0].department %>" method="post">
+          <input type="text" placeholder="Search from this department" name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    <div class="container">
+        <% prof_profile.forEach(function(prof){ %>  
+        <a href="/profPage/<%= prof.id %>"  class="profCT-container">
+            <img src="/images/icon.png">
+            <div class="prof-name" id="profBS11">
+                <p><%= prof.name %></p>
+            </div>
+        </a>
+        <% }); %>
+    </div>
+    <% }; %> 
+
+</body>
+
+</html>    

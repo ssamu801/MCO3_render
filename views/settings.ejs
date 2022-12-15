@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" media="all" href="/css/settings.css" > 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <%- include('../views/partials/header.ejs'); %>
+
+    <!-- EDIT PROFILE -->
+    <div class="settings-container">
+       
+        <!-- SETTINGS BOX -->
+        <div class="settings-box">
+
+            <!-- LEFT ACCENT BOX -->
+            <div class="left-box"></div>
+
+            <!-- EDIT INFORMATION -->
+            <form action="/updateUser/<%= user.id %>" method="post" id="edit-info-form">
+                <input type="hidden" value="<%= user.password %>" name="passwordHash">
+                <!-- EDIT USERNAME -->
+                <div class="form" id="username-div">
+                    <label for="username-text"> Username </label>
+                    <br>
+                    <input type="text" name="username" id="username-input" value="<%= user.username %>" minlength="4" onkeypress="return AvoidSpace(event)" required>
+                </div>
+
+                <!-- CHANGE EMAIL -->
+                <div class="form" id="email-div">
+                    <span class="change-email"> CHANGE EMAIL ADDRESS </span>
+                    <br><br>
+                    
+                    <label for="new-email">Email </label> 
+                    <br>
+                    <input type="email" name="email" id="new-email" value="<%= user.email %>" required>
+                </div>
+                
+                <!-- CHANGE PASSWORD -->
+                <div class="form" id="password-div">
+                    <span class="change-password"> CHANGE PASSWORD </span>
+                    <br><br>
+
+                    <label for="new_password"> New Password </label> 
+                    <br>
+                    <input type="password" name="new_password" minlength="8" id="new_password">
+                    <br><br>
+                    <label for="confirm_password"> Confirm Password </label> 
+                    <br>
+                    <input type="password" name="confirm_password" id="confirm_password">
+
+                    <br><br><br><br>
+                    <label for="password"> Enter Current Password </label> 
+                    <br>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                <!-- SAVE CHANGES BUTTON -->
+                <div class="form" id="button-div">
+                    <button type="submit" id="save-button"> <span class="button-text"> SAVE CHANGES </span> </button> 
+                </div>
+            </form>
+
+            </div>
+            
+            
+        </div>
+    </div>
+<script src="/javascript/updateProfile.js"></script>
+</body>
+</html>

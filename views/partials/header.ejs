@@ -1,0 +1,33 @@
+<% if(user.role == "user"){ %>
+<div class="navbar">
+    <a class="logo" href="/home"> <img src="/images/logo.png" alt="Logo"></a>
+    <a class="name" href="/home">PROFADVISOR</a>
+    <a class="navbutton" href="/logout">LOGOUT</a>
+    <a class="navbutton" href="/about">ABOUT</a>
+    <a class="navbutton" href="/profile/<%= user.id %>"><%= user.username %></a>
+    <% if(user.role == "admin"){ %>
+    <a class="navbutton" href="/adminPage">EDIT PROFS</a>
+    <% } %>
+    <div class="search-container">
+        <form action="/search" method="post" >
+          <input type="text" placeholder="Search" name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+</div>
+<% } %>
+
+<% if(user.role == "admin"){ %>
+<div class="navbar">
+  <a class="logo" href="/adminPage"> <img src="/images/logo.png" alt="Logo"></a>
+  <a class="name" href="/adminPage">PROFADVISOR</a>
+  <a class="navbutton" href="/logout">LOGOUT</a>
+  <a class="navbutton" href="/about">ABOUT</a>
+  <div class="search-container">
+      <form action="/search" method="post" >
+        <input type="text" placeholder="Search" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+</div>
+<% } %>

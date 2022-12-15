@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/confirmDelete.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Edit Prof</title>
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+<!------------------content container--------------------->
+<p class="heading">DELETE PROF</p>
+<div class="container">
+    <!------------------post container--------------------->
+    
+    <form action="/delProf" method="post">
+        <input type="hidden" value="<%= prof_profile.id %>" name="profID">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="Name" value="<%= prof_profile.name %>" readonly>
+
+        <div class="input_fields_wrap">
+            <label for="courses">Courses</label>
+            <input type="text" name="courses[]" placeholder="Courses" value="<%= prof_profile.courses[0] %>"  readonly>
+
+            <% if(prof_profile.courses.length > 1){ %>
+                <%   for(let i = 1; i < prof_profile.courses.length; i++){ %>
+                    <div class="add-input">
+                        <input class="add-field" type="text" type="text" name="courses[]" placeholder="Courses" value="<%= prof_profile.courses[i] %>" readonly>
+                    </div>
+                <%  } %>
+                <% }; %>
+        </div>
+
+        <div class="input-fields-wrap">
+            <label for="courses_name">Courses Name (Enter courses name in the same order as the courses were entered)</label>
+            <input type="text" name="courses_name[]" placeholder="Courses Name" value="<%= prof_profile.courses_name[0] %>" readonly>
+
+            <% if(prof_profile.courses_name.length > 1){ %>
+                <%   for(let i = 1; i < prof_profile.courses_name.length; i++){ %>
+                    <div class="add_input">
+                        <input class="add_field" type="text" name="courses_name[]" placeholder="Courses Name" value="<%= prof_profile.courses_name[i] %>" readonly>
+                    </div>
+                <%  } %>
+                <% }; %>
+        </div>
+    
+        <label for="college">Courses</label>
+        <input type="text" name="college" value="<%= prof_profile.college %>"  readonly>
+
+        <label for="department">Department</label>
+        <input type="text" name="department" value="<%= prof_profile.department %>"  readonly>
+
+        <h4 class="prompt">Would you like to delete this prof?</h4>
+        <input class="confirm" type="submit" value="Okay">
+      </form>
+      <form action="/deleteProf">
+        <button class="cancel" type="submit">Cancel</button>
+        </form>
+    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
+<script src="/javascript/admin_page.js"></script>  
+</body>
+
+</html>

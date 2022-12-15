@@ -1,0 +1,122 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/userProfile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+
+    <title><%= user_profile.username %></title>
+
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+    <!---------------MAIN CONTAINER---------------------------->    
+    <div class="container">
+        <div class="content-container">
+            <div class="icon">
+                <img src="/images/icon.png">
+            </div>
+            <div class="info">
+                <span class="user-username"><%= user_profile.username %></span>
+                <div class="follower-following">
+                    <a href="/profile/<%= user_profile.id %>/followers" class="followers"><%= user_profile.followers.length %> followers</a>
+                    <a href="/profile/<%= user_profile.id %>/following" class="following"><%= user_profile.following.length %> following </a>
+                </div>
+            </div>
+            <% if(user.username != user_profile.username && isFollowed == 0){ %>
+            <div class="follow-btn">
+                <form class="follow-form" action="/followUser/<%= user_profile.id %>" method="post">
+                    <input type="hidden" value="<%= user.id %>" name="userID">
+                    <input type="hidden" value="<%= user.username %>" name="userUsername">
+                    <input type="hidden" value="<%= user_profile.username %>" name="accUsername">
+                    <button type="submit" id="follow-btn">Follow</button>
+                </form>
+            </div>
+            <% } %>
+            <% if(user.username != user_profile.username && isFollowed == 1){ %>
+                <div class="follow-btn">
+                    <form class="follow-form" action="/unfollowUser/<%= user_profile.id %>" method="post">
+                        <input type="hidden" value="<%= user.id %>" name="userID">
+                        <input type="hidden" value="<%= user.username %>" name="userUsername">
+                        <input type="hidden" value="<%= user_profile.username %>" name="accUsername">
+                        <button type="submit" id="follow-btn">Unfollow</button>
+                    </form>
+                </div>
+                <% } %>
+            <% if(user.username == user_profile.username){ %>
+                <div class="follow-btn">
+                    <form action="/settings/<%= user_profile.id %>">
+                        <button class="edit-btn" type="submit">Edit profile</button>
+                        </form>
+                </div>
+            <% } %>
+            <div class="reviews">
+                <header class="reviews-heading">REVIEWS</header>
+                <ul>
+                    <% if(reviews.length == 0){ %>
+                        <li>
+                           <p class="no-review">This user has no reviews yet.</p>
+                        </li>
+                        <% }; %> 
+                        <% reviews.forEach(function(review){ %>
+                            <li class="review-content"> 
+                                <div class="review-container">
+                                    <div class="user-icon">
+                                        <img src="/images/icon.png">
+                                    </div>
+                                    <div class="name">
+                                        <span>Review by</span>
+                                        <p class="username"><%= review.username %></p>
+                                    </div>
+                                    <% if(user.username == review.username){ %>
+                                    <div class="del-btn">
+                                        <form class="del-form" action="/deletePost" method="post">
+                                            <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                            <button type="submit" class="fa-solid fa-trash" id="del-btn"></button>
+                                        </form>
+                                    </div>
+                                    <% }; %> 
+                                    <div class="course-review">
+                                        <span>course: </span>
+                                        <p><%= review.course %></p>
+                                    </div>
+                                    <div class="user-review">
+                                        <p><%= review.reviewContent %> </p>
+                                    </div>
+                                    <div class="review-likes">
+                                        <span class="fa-solid fa-thumbs-up"></span>
+                                        <span class="likes"> <%= review.likes %></span>
+                                    </div>
+                                    <%var liked = 0 %>
+                                    <% for (let i = 0; i < test.length; i++ ){ %>
+                                        <% if(test[i].id == String(review.id)){ %>
+                                            <%  liked++ %>
+                                        <%  } %>
+                                    <% }; %>
+                                    <% if(liked == 0) { %>
+                                    <div class="like-btn">
+                                        <form class="likes-form" action="/incrementLikes" method="post">
+                                            <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                            <button type="submit" class="fa-thumbs-up fa-regular" id="like=btn"></button>
+                                        </form>
+                                    </div>
+                                    <% } else { %>
+                                        <div class="like-btn">
+                                            <form class="likes-form" action="/decrementLikes" method="post">
+                                                <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                                <button type="submit" class="fa-thumbs-up fa-solid" id="like=btn"></button>
+                                            </form>
+                                        </div>   
+                                    <% }%> 
+                                </div>
+                            </li>  
+                            <% }); %>
+                </ul>
+            </div>
+        </div>
+    </div>
+  
+</body>
+
+</html>

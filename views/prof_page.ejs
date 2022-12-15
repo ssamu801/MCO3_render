@@ -1,0 +1,265 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/prof_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+
+    <title><%= prof_profile.name %></title>
+
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+    <!---------------MAIN CONTAINER---------------------------->    
+    <div class="container">
+        <div class="content-container">
+            <!---------------LEFT SECTION--------------------------->
+            <div class="vertical-container">
+                <section class="icon">
+                    <img src="/images/icon.png">
+                </section>
+                <!------------COURSES TABLE------------------->
+                <section class="courses">
+                    <ul>
+                        <li class="header">Courses</li>
+                        <% for (let i = 0; i < prof_profile.courses.length; i++ ){ %>
+                        <li><a href="/profReviews/<%= prof_profile.id %>/<%= prof_profile.courses[i] %>" class="listed-courses"><%= prof_profile.courses[i] %></a></li>
+                        <% }; %>
+                    </ul>
+                </section>
+            </div>
+            <!--------------RIGHT SECTION-------------------------->
+            <div class="right-container">
+                <div class="info-container">
+                    <!-------------------PROF INFO------------------>
+                    <div class="info">
+                         <header>Prof Info:</header>
+                        <p> Name: <%= prof_profile.name %><br>
+                            <% for (let i = 0; i < prof_profile.courses.length; i++ ){ %>
+                            <br><%= prof_profile.courses[i] %> - <%= prof_profile.courses_name[i] %>
+                            <% }; %>   
+                            <br><br>
+                            College Department: <br><%= prof_profile.college %> - <%= prof_profile.department %> Department
+                            
+                        </p>
+                    </div>    
+                </div>
+                <!-------------ADD REVIEWS SECTION------------------->
+                <div class="review-box">
+                    <!-----------ADD STAR RATING------------->
+                    <p class="rate-label">Rate</p>
+                    <% if(isRated == 0){ %>
+                    <div class="star-container">
+                        <a href="/<%= prof_profile.id %>/<%= user.id %>/1" class="rating__star fas fa-star"></a>
+                        <a href="/<%= prof_profile.id %>/<%= user.id %>/2" class="rating__star fas fa-star"></a>
+                        <a href="/<%= prof_profile.id %>/<%= user.id %>/3" class="rating__star fas fa-star"></a>
+                        <a href="/<%= prof_profile.id %>/<%= user.id %>/4" class="rating__star fas fa-star"></a>
+                        <a href="/<%= prof_profile.id %>/<%= user.id %>/5" class="rating__star fas fa-star"></a>
+                    </div>
+                    <% }; %> 
+                    <% if(isRated == 1){ %>
+                        <div class="star-container disabled">
+                        <% for (let i = 0; i < user_rating.rating; i++ ){ %>
+                                <a class="rating__star fas fa-star active"></a>
+                        <% }; %>
+                        <% for (let i = user_rating.rating; i < 5; i++ ){ %>
+                            <a class="rating__star fas fa-star"></a>
+                        <% }; %>  
+                    </div>  
+                    <% }; %> 
+                    <hr>
+                    <!----------ADD REVIEW---------------------------->
+                    <div class="add-review-container">
+                        <button type="submit" class="add-review-button" onclick="openReviewForm()">Add a review</button>
+                    </div>
+                </div>
+                <!--------------------AVERAGE STAR RATING--------------->
+                <div class="ratings-container">
+                    <hr>
+                    <% if(prof_profile.rated_userID.length == 0){ %>
+                        <div class="ratings-content">
+                            <p class="average">Average Rating: 0/5 <span class="user-count"><%= prof_profile.rated_userID.length%> users</span></p>
+                        </div>
+                        <div class="average-stars">
+                            <span class="fade rating__star fas fa-star"></span>
+                            <span class="fade rating__star fas fa-star"></span>
+                            <span class="fade rating__star fas fa-star"></span>
+                            <span class="fade rating__star fas fa-star"></span>
+                            <span class="fade rating__star fas fa-star"></span>
+                        </div>
+                        <% }; %> 
+                    <% if(prof_profile.rated_userID.length != 0){ %>
+                    <div class="ratings-content">
+                        <p class="average">Average Rating: <%= sum.sum_val / prof_profile.rated_userID.length %>/5 <span class="user-count"><%= prof_profile.rated_userID.length%> users</span></p>
+                    </div>
+                    <div class="average-stars">
+                        <% for (let i = 0; i < Math.floor(sum.sum_val / prof_profile.rated_userID.length); i++ ){ %>
+                            <span class="rating__star fas fa-star"></span>
+                        <% }; %>
+                        <% for (let i = Math.floor(sum.sum_val / prof_profile.rated_userID.length); i < 5; i++ ){ %>
+                            <span class="fade rating__star fas fa-star"></span>
+                        <% }; %>
+                    </div>
+                    <br>
+                    <% }; %> 
+                </div>
+                <div class="reviews">
+                    <!---------------------POPULAR REVIEWS------------------------>
+                    <section class="popular-reviews">
+                        <header class="section-heading">POPULAR REVIEWS</header>
+                        <ul>
+                            <% if(dbreviews.length == 0){ %>
+                                <li>
+                                   <p class="no-review">There are no reviews for this prof yet.</p>
+                                </li>
+                                <% }; %> 
+                            <% dbreviews.slice(0,5).forEach(function(review){ %>
+                            <li class="review-content"> 
+                                <div class="review-container">
+                                    <div class="user-icon">
+                                        <img src="/images/icon.png">
+                                    </div>
+                                    <div class="name">
+                                        <span>Review by</span>
+                                        <p class="username"><%= review.username %></p>
+                                    </div>
+                                    <% if(user.username == review.username || user.role == "admin"){ %>
+                                    <div class="del-btn">
+                                        <form class="del-form" action="/deletePost" method="post">
+                                            <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                            <button type="submit" class="fa-solid fa-trash" id="del-btn"></button>
+                                        </form>
+                                    </div>
+                                    <% }; %> 
+                                    <div class="course-review">
+                                        <span>course: </span>
+                                        <p><%= review.course %></p>
+                                    </div>
+                                    <div class="user-review">
+                                        <p><%= review.reviewContent %> </p>
+                                    </div>
+                                    <div class="review-likes">
+                                        <span class="fa-solid fa-thumbs-up"></span>
+                                        <span class="likes"> <%= review.likes %></span>
+                                    </div>
+                                    <%var liked = 0 %>
+                                    <% for (let i = 0; i < test.length; i++ ){ %>
+                                        <% if(test[i].id == String(review.id)){ %>
+                                            <%  liked++ %>
+                                        <%  } %>
+                                    <% }; %>
+                                    <% if(liked == 0) { %>
+                                    <div class="like-btn">
+                                        <form class="likes-form" action="/incrementLikes" method="post">
+                                            <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                            <button type="submit" class="fa-thumbs-up fa-regular" id="like=btn"></button>
+                                        </form>
+                                    </div>
+                                    <% } else { %>
+                                        <div class="like-btn">
+                                            <form class="likes-form" action="/decrementLikes" method="post">
+                                                <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                                <button type="submit" class="fa-thumbs-up fa-solid" id="like=btn"></button>
+                                            </form>
+                                        </div>   
+                                    <% }%> 
+                                </div>
+                            </li>  
+                            <% }); %>
+                        </ul>
+                
+                    </section>
+                    <div class="divider"></div>
+                    <!--------------RECENT REVIEWS-------------------------->
+                <section class="recent-reviews">
+                           <header class="section-heading">RECENT REVIEWS</header>
+                        <ul>
+                            <% if(dbreviews.length == 0){ %>
+                                <li>
+                                   <p class="no-review">There are no reviews for this prof yet.</p>
+                                </li>
+                                <% }; %> 
+                            <% reviews.slice(0,5).forEach(function(review){ %>
+                            <li class="review-content"> 
+                                <div class="review-container">
+                                    <div class="user-icon">
+                                        <img src="/images/icon.png">
+                                    </div>
+                                    <div class="name">
+                                        <span>Review by</span>
+                                        <p class="username"><%= review.username %></p>
+                                    </div>
+                                    <% if(user.username == review.username || user.role == "admin"){ %>
+                                    <div class="del-btn">
+                                        <form class="del-form" action="/deletePost" method="post">
+                                            <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                            <button type="submit" class="fa-solid fa-trash" id="del-btn"></button>
+                                        </form>
+                                    </div>
+                                    <% }; %> 
+                                    <div class="course-review">
+                                        <span>course: </span>
+                                        <p><%= review.course %></p>
+                                    </div>
+                                    <div class="user-review">
+                                        <p><%= review.reviewContent %> </p>
+                                    </div>
+                                    <div class="review-likes">
+                                        <span class="fa-solid fa-thumbs-up"></span>
+                                        <span class="likes"> <%= review.likes %></span>
+                                    </div>
+                                    <%var liked = 0 %>
+                                    <% for (let i = 0; i < test.length; i++ ){ %>
+                                        <% if(test[i].id == review.id){ %>
+                                            <%  liked++ %>
+                                        <%  } %>
+                                    <% }; %>
+                                    <% if(liked == 0) { %>
+                                    <div class="like-btn">
+                                        <form class="likes-form" action="/incrementLikes" method="post">
+                                            <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                            <button type="submit" class="fa-thumbs-up fa-regular" id="like=btn"></button>
+                                        </form>
+                                    </div>
+                                    <% } else { %>
+                                        <div class="like-btn">
+                                            <form class="likes-form" action="/decrementLikes" method="post">
+                                                <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                                <button type="submit" class="fa-thumbs-up fa-solid" id="like=btn"></button>
+                                            </form>
+                                        </div>   
+                                    <% }%> 
+                                </div>
+                            </li>
+                            <% }); %>
+                        </ul>
+                
+                </section>
+                <!--------REVIEW FORM POPUP-------------->
+                <div class="review-form-popup" id="review-form-popup">
+                    <h2>Write a review about this prof!</h2>
+                    <span class="fa-solid fa-x" onclick="closeReviewForm()"></span>
+                    <form action="/saveReview" method="post">
+                        <input type="hidden" value="<%= prof_profile.id %>" name="profID">
+                        <input type="hidden" value="<%= prof_profile.name %>" name="prof_name">
+                        <textarea name="reviewContent" id="text-review" class="field" placeholder="Add a review..." required></textarea>
+                        <label for="course_dropdown">Course</label><br>
+                        <select name="course_dropdown">
+                            <% prof_profile.courses.forEach(function(courses){ %>  
+                                <option><%= courses %></option>
+                            <% }); %>
+                        </select>
+                        <button type="submit" onclick="closeReviewForm()">Submit review</button>
+                    </form>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  
+<script src="/javascript/prof_page.js"></script>
+</body>
+
+</html>

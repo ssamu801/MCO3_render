@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/prof_reviews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    
+
+    <title><%= name %> Reviews</title>
+
+</head>
+
+<body>
+    <!------------------NAVBAR--------------------->
+    <%- include('../views/partials/header.ejs'); %>
+
+    <!---------------MAIN CONTAINER---------------------------->    
+    <div class="container">
+        <div class="content-container">
+            <p class="heading">REVIEWS OF <br>
+            <span class="prof_name"><%= name %> </span>
+            <span class="course_name"><%= course %></span>
+            </p>
+        <section class="popular-reviews">
+            <% if (reviews.length == 0){ %>
+                <p class="empty">There are no reviews for this course yet.</p>
+                <% } %>
+            <ul>
+                <% reviews.forEach(function(review){ %>
+                <li class="review-content"> 
+                    <div class="review-container">
+                        <div class="user-icon">
+                            <img src="/images/icon.png">
+                        </div>
+                        <div class="name">
+                            <span>Review by</span>
+                            <p class="username"><%= review.username %></p>
+                        </div>
+                        <% if(user.username == review.username || user.role == "admin"){ %>
+                            <div class="del-btn">
+                                <form class="del-form" action="/deletePost" method="post">
+                                    <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                    <button type="submit" class="fa-solid fa-trash" id="del-btn"></button>
+                                </form>
+                            </div>
+                            <% }; %> 
+                        <div class="user-review">
+                            <p><%= review.reviewContent %> </p>
+                        </div>
+                        <div class="review-likes">
+                            <span class="fa-solid fa-thumbs-up"></span>
+                            <span class="likes"> <%= review.likes %></span>
+                        </div>
+                        <%var liked = 0 %>
+                        <% for (let i = 0; i < test.length; i++ ){ %>
+                            <% if(test[i].id == String(review.id)){ %>
+                                    <%  liked++ %>
+                            <%  } %>
+                                <% }; %>
+                            <% if(liked == 0) { %>
+                            <div class="like-btn">
+                                <form class="likes-form" action="/incrementLikes" method="post">
+                                    <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                    <button type="submit" class="fa-thumbs-up fa-regular" id="like=btn"></button>
+                                </form>
+                            </div>
+                            <% } else { %>
+                            <div class="like-btn">
+                                <form class="likes-form" action="/decrementLikes" method="post">
+                                    <input type="hidden" value="<%= review.id %>" name="reviewID">
+                                    <button type="submit" class="fa-thumbs-up fa-solid" id="like=btn"></button>
+                                </form>
+                            </div>   
+                            <% }%> 
+                    </div>
+                </li>  
+                <% }); %>
+            </ul>
+    
+        </section>
+        </div>
+    </div>
+
+</body>
+
+</html>

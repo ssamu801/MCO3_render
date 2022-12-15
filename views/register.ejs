@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" media="all" href="/css/register.css"> 
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <div class="navbar">
+        <a class="logo" href="/home"> <img src="/images/logo.png" alt="Logo"></a>
+        <a class="name" href="/home">PROFADVISOR</a>
+        <!-- <a class="navbutton" href="#about">ABOUT US</a> -->
+        <a class="navbutton" href="/login">LOGIN</a>
+    </div>
+
+
+    <!-- REGISTER  -->
+    <div class="container"> 
+        <% if(isValid == 0){ %>
+            <div class="error-message">  
+                <p>Invalid email!</p>
+            </div>
+        <% } else if(usernameExists == 1 && emailExists == 1){ %>
+            <div class="error-message">  
+                <p>Username and email are already used!</p>
+            </div>
+        <% } else if(usernameExists == 1){ %>
+            <div class="error-message">  
+                <p>Username is already used!</p>
+            </div>
+        <% } else if(emailExists == 1){ %>  
+            <div class="error-message">  
+                <p>Email is already used!</p>
+            </div>
+        <% }  %> 
+        <div class="reg-box">
+            <div class="reg-frame">
+                <span class="register">SIGN UP</span>
+                
+                <form id="reg-form" action="/register" method="POST">
+
+                    <div class="form" id="username" name="username">
+                        <label for="username">Username</label> 
+                        <br>
+                        <input type="text" name="username" id="username-input" onkeypress="return AvoidSpace(event)" minlength="4" required>
+                    </div>
+                    <br>
+                    <div class="form" id="email-div">
+                        <label for="email-text">Email</label> 
+                        <br>
+                        <input type="email" name="email" id="email-input" required>
+                    </div>
+
+                    <div class="form" id="reg-password-div">
+                        <label for="password">Password</label> 
+                        <br>
+                        <input type="password" name="password" id="password" minlength="8" required>
+                    </div>
+
+                    <div class="form" id="button-div">
+                        <button type="submit" id="reg-button"><span class="reg-text">SIGN UP</span></button> 
+                        <br>
+                        <span class="need-acc">Already a user? <a href="/login">LOGIN</a></span>
+                    </div>
+                    
+                </form>
+                    
+            </div>
+
+        </div>
+    </div>
+    <script src="/javascript/prof_page.js"></script>    
+</body>
+</html>

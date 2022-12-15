@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/login.css"> 
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <div class="navbar">
+        <a class="logo" href="/home"> <img src="/images/logo.png" alt="Logo"></a>
+        <a class="name" href="/home">PROFADVISOR</a>
+        <!-- <a class="navbutton" href="#about">ABOUT US</a> -->
+        <a class="navbutton" href="/register">REGISTER</a>
+    </div>
+
+
+    <!-- LOGIN  -->
+    <div class="container"> 
+        <% if(logErr == 1){ %>  
+            <div class="error-message">  
+                <p>Wrong email or password!</p>
+            </div>
+            <% } %>  
+        <div class="login-box">
+            <div class="login-frame">
+                <span class="login">LOGIN</span>
+                
+                <form id="login-form" action="/login" method="POST">
+
+                    <div class="form" id="email-div">
+                        <label for="email-text">Email</label> 
+                        <br>
+                        <input type="email" name="email" id="email-input" required>
+                    </div>
+
+                    <div class="form" id="login-password-div">
+                        <label for="password">Password</label> 
+                        <br>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+
+                    <div class="form" id="button-div">
+                        <button type="submit" id="login-button"><span class="login-text">LOGIN</span></button> 
+                        <br>
+                        <span class="need-acc">Need an account? <a href="/register">SIGN UP</a></span>
+                    </div>
+                    
+                </form>
+                    
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
