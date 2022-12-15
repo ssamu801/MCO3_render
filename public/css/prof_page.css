@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+:root {
+    --ourwhite: #feffff;
+    --accent: #def2f1;
+    --semiDarkBlue: #3AAFA9;
+    --darkBlue: #2b7a78;
+    --dark: #17252a;
+}
+html, body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent);
+    height: 100%;
+  }
+ 
+  /* NAVBAR */
+.navbar {
+    overflow: hidden;
+    background-color: white;
+}
+
+.navbar a.navbutton {
+    color: black;
+    text-align: center;
+    padding: 30px 5px;
+    text-decoration: none;
+    font-size: 25px;
+    float: right;
+    margin-right: 30px;
+    
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+.navbar a.name {
+    color: black;
+    text-align: center;
+    margin-left: 2.80px;
+    margin-top:27px; 
+    text-decoration: none;
+    font-size: 32px;
+    float: left;
+    font-weight: 1000;
+
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+
+.navbar img {
+    height: 67px;
+    width: 67px;
+    padding-top: 12px;
+    padding-left: 25px;
+    border-radius: 50%;
+}
+
+.navbar a.logo {
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    
+}
+ 
+.navbar a.navbutton:hover {
+    background-color: var(--semiDarkBlue);
+    color: white;
+}
+
+.navbar input[type=text] {
+    font-size: 15px;
+    width: 600px;
+    height: 25px;
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+.navbar p{
+    bottom: 10px;
+}
+
+.navbar input[type=text] {
+    font-size: 15px;
+    width: 600px;
+    height: 25px;
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+.navbar p{
+    bottom: 10px;
+}
+
+.navbar .search-container {
+    margin-top: 20px;
+    display: flex;
+    float: none;
+  }
+  
+.navbar input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: 1px solid grey;
+}
+  
+.navbar .search-container button {
+    float: none;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: var(--darkBlue);
+    font-size: 17px;
+    border: var(--dark);
+    cursor: pointer;
+    color: var(--ourwhite);
+}
+  
+.navbar .search-container button:hover {
+    background: #22918d;
+}
+
+/* WEBPAGE CONTENT */
+.container{
+    padding-bottom: 25px;
+}
+
+.content-container{
+    display: grid;
+    grid-template-columns: 215px 1fr;
+    column-gap: 10px;
+    background-color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+    height: auto;
+}
+
+/* LEFT SECTION */
+.vertical-container{
+    display: grid;
+    grid-template-rows: 220px 1fr;
+    background-color: #3aafa9;
+    height:inherit ;
+}
+
+.icon{
+    padding: 10px;
+    
+}
+
+.icon img{
+    width: 200px;
+    
+}
+
+.courses{
+    padding: 20px;
+    
+}
+
+.courses ul {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #feffff;
+    border-radius: 5px;
+}
+
+.courses .header {
+    background-color: #2b7a78;
+    border: 1px solid #feffff;
+    padding: 5px;
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.courses li {
+    background-color: #def2f1;
+    border-top: 1px solid white;
+    padding: 5px;
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.courses .listed-courses{
+    cursor: pointer;
+}
+
+.courses .listed-courses:link{
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.courses .listed-courses:visited{
+    color: var(--dark);
+}
+
+.courses .listed-courses:hover{
+    color: gray;
+    text-decoration: underline;
+}
+
+/* RIGHT SECTION */
+.right-container{
+    display: grid;
+    grid-template-columns: 650px 1fr;
+    grid-template-rows: 3;
+    column-gap: 10px;
+    height: auto;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* PROF INFO */
+.info-container{
+    height: auto;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.info{
+    height: auto;
+    padding: 10px;
+
+}
+
+.info header{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* ADD REVIEW/RATING SECTION */
+.ratings-container{
+   
+   /* background-color: green; */
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+ 
+}
+
+.review-box{
+    height: 178px;
+    margin: 0;
+    /*background-color: lightgreen; */
+
+}
+
+.rate-label{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* ADD RATING */
+.star-container {
+    position: relative;
+    height: 80px;
+    width: 338px;
+    left:35px;
+ }
+
+.star-container a {
+    position: relative;
+    top: 15px;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin-right: 14px;
+    margin-bottom: 0px;
+    z-index: 2;
+    opacity: 50%;
+}
+
+.star-container .rating__star {
+    position: relative;
+    font-size: 60px;
+    cursor: pointer;
+    color: var(--semiDarkBlue);
+    transition: filter linear .3s;
+ }
+
+.star-container.disabled{
+    pointer-events: none;
+}
+ 
+.star-container:hover a{
+    opacity: 100%;
+ }
+
+.star-container a:hover{
+    opacity: 100%;
+ }
+
+.star-container a:hover ~ a{
+    opacity: 50%;
+ } 
+
+.star-container a.active{
+    opacity: 100%;
+ }  
+
+/* ADD REVIEW */
+.review-box p {
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.review-box .add-review-container{
+    text-align:center
+}
+
+.review-box hr{
+    width: 390px;
+}
+
+.add-review-container p{
+    margin: 0;
+}
+
+.add-review-container a.add-review {
+    top: 10px;
+    position: relative;
+    font-size: 20px;
+}
+
+/* AVERAGE RATING */
+.user-count{
+    float: right;
+}
+.average-stars{
+    width: 380px;
+    height: 50px;
+    left: 35px;
+    position: relative;
+    
+}
+
+.average-stars .fade{
+    position: relative;
+    font-size: 60px;
+    color: var(--semiDarkBlue);
+    opacity: 50%;
+ }
+
+.average-stars .rating__star {
+    margin-right: -3px;
+    position: relative;
+    font-size: 60px;
+    color: var(--semiDarkBlue);
+ }
+
+.ratings-container hr{
+    width: 388px;
+}
+
+.ratings-container .average{
+    margin: 10px;
+}
+
+
+  
+/* REVIEWS */
+.reviews{
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    column-gap: 15px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+   
+}
+
+.reviews .section-heading{
+    font-size: 16px;
+    font-weight: bold;
+    grid-row-start: 1;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.popular-reviews{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-start: 3;
+    margin: 0;
+}
+
+.divider{
+    background-color: black;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-start: 3;
+}
+
+.recent-reviews{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-start: 3;
+    margin: 0;
+}
+
+.reviews ul{
+    margin: 0;
+    padding: 0;
+}
+
+.reviews li{
+    padding-bottom: 15px;
+    padding-right: 10px;
+    border-top: 1px solid black;
+    display: block;
+}
+
+.review-content{
+    position: relative;
+}
+
+
+.popular-reviews .review-container{
+    
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 27px 20px 1fr 20px;
+    display: grid;
+    position: relative;
+}
+
+.recent-reviews .review-container{
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 27px 20px 1fr;
+    display: grid;
+    position: relative;
+
+}
+
+/* REVIEW CONTENT */
+.user-icon{
+    
+    grid-row-start: 0;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+}
+
+.user-icon img{
+    padding-top: 5px;
+    padding-left: 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+}
+
+.reviews .name{
+    margin-top: 5px;
+    
+    grid-row-start: 0;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+
+.del-btn{
+    
+    margin-top: 10px;
+    
+    grid-row-start: 0;
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.fa-trash{
+    font-size: 20px;
+}
+
+.name p{
+    display: inline;
+}
+
+.username{
+    font-weight: bold;
+}
+
+.course-review{
+    
+    grid-row-start: 1;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+
+.course-review p{   
+    display: inline;
+    font-weight: bold;
+}
+
+.user-review{
+    
+    grid-row-start: 2;
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+
+.user-review p{
+    margin-top: 5px;
+    font-size: 15px;
+
+}
+
+.review-likes{
+    
+    grid-row-start: 3;
+    grid-row-start: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.review-likes .likes{
+    font-size: 13px;
+}
+
+.fa-thumbs-up{
+    font-size: 20px;
+}
+
+.fa-solid{
+    color:var(--semiDarkBlue);
+    
+}
+
+.fa-regular{
+    color:var(--semiDarkBlue);
+    cursor: pointer;
+}
+
+.likes-form{
+    margin: 0px;
+}
+
+.like-btn{
+    
+    grid-row-start: 3;
+    grid-row-start: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.unlike-btn{
+    
+    grid-row-start: 3;
+    grid-row-start: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.recent-reviews{
+    grid-row-start: 2;
+    grid-row-start: 3;
+}
+
+.add-review-button{
+    padding: 10px 60px;
+    background-color: var(--semiDarkBlue);
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ourwhite);
+    border-radius: 30px;
+}
+
+.add-review-button:hover{
+    background-color:#2A807B;
+}
+
+/* REVIEW FORM POPUP */ 
+.review-form-popup{
+    width: 400px;
+    background-color: var(--ourwhite);
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    padding: 0 30px 30px;
+    color: black;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup-review-form{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.fa-x{
+    float: right;
+    margin-right: -20px;
+    margin-top: -50px;
+}
+
+textarea[id=text-review] {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 10px;
+    margin-bottom: 10px;
+  
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+input[id=course-reviews] {
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}  
+
+.review-form-popup button{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--semiDarkBlue);
+    color: white;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.review-form-popup button:hover{
+    background-color:#2A807B;
+}
+
+/* COURSE REVIEWS POPUP */                   
+.listed-courses-reviews{
+    width: 400px;
+    background-color: var(--ourwhite);
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 30px 30px;
+    color: black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    visibility: hidden;
+}
+
+.popup-listed-courses{
+    visibility: visible;
+}
+
+.listed-courses-reviews .review-container{
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 27px 20px 1fr;
+    display: grid;
+    position: relative;
+
+}
+
+.listed-courses-reviews button{
+    width: 100%;
+    background-color: var(--semiDarkBlue);
+    color: white;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+:root {
+    --ourwhite: #feffff;
+    --accent: #def2f1;
+    --semiDarkBlue: #3AAFA9;
+    --darkBlue: #2b7a78;
+    --dark: #17252a;
+}
+html, body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent);
+    height: 100%;
+  }
+ 
+  /* NAVBAR */
+.navbar {
+    overflow: hidden;
+    background-color: white;
+}
+
+.navbar a.navbutton {
+    color: black;
+    text-align: center;
+    padding: 30px 5px;
+    text-decoration: none;
+    font-size: 25px;
+    float: right;
+    margin-right: 30px;
+    
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+.navbar a.name {
+    color: black;
+    text-align: center;
+    margin-left: 2.80px;
+    margin-top:27px; 
+    text-decoration: none;
+    font-size: 32px;
+    float: left;
+    font-weight: 1000;
+
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+
+.navbar img {
+    height: 67px;
+    width: 67px;
+    padding-top: 12px;
+    padding-left: 25px;
+    border-radius: 50%;
+}
+
+.navbar a.logo {
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    
+}
+ 
+.navbar a.navbutton:hover {
+    background-color: var(--semiDarkBlue);
+    color: white;
+}
+
+.navbar input[type=text] {
+  font-size: 15px;
+  width: 600px;
+  height: 25px;
+  margin-left: 300px;
+  margin-top: 30px;
+}
+
+.navbar p{
+  bottom: 10px;
+}
+
+.navbar .search-container {
+  margin-top: 20px;
+  display: flex;
+  float: none;
+}
+
+.navbar input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: 1px solid grey;
+}
+
+.navbar .search-container button {
+  float: none;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: var(--darkBlue);
+  font-size: 17px;
+  border: var(--dark);
+  cursor: pointer;
+  color: var(--ourwhite);
+}
+
+.navbar .search-container button:hover {
+  background: #22918d;
+}
+/*drop down*/
+.dropdown select,
+.dropdown button {
+  border-radius: 0 0 0 0;
+  width: 11.5%;
+  display: inline;
+  margin-top: 2%;
+}
+
+#div-filter {
+  width: 10%;
+  display: inline;
+
+}
+
+.searchbar {
+  flex: auto;
+  margin: auto;
+  display: inline;
+  align-items: center;
+}
+
+.form-control {
+  width: 15%;
+  height: 34px;
+  padding: 6px 12px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.container{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 200px;
+}
+
+.profCT-container{
+    background-color: white;
+    width: 500px;
+    height: 200px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    column-gap: 10px;
+    cursor: pointer;
+}
+
+.profCT-container img{
+    width: 100px;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right:0 ;
+
+}
+
+.profCT-container:link{
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.profCT-container:visited{
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.profCT-container:hover{
+    background-image: url(images_css/logo.png);
+    background-repeat: no-repeat;
+    background-size: 250px;
+    background-position:270px 20px;
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.profCT-container:active{
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.prof-name{
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.prof-name p{
+    font-size: 30px;
+}
+
+.search-container {
+    float: right;
+  }
+
+.search-container input{
+    background-color: white;
+}
+  
+ input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: var(--semiDarkBlue);
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-container button:hover {
+    background: var(--darkBlue);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .search-container {
+      float: none;
+    }
+    input[type=text], .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    input[type=text] {
+      border: 1px solid var(--dark);  
+    }
+}

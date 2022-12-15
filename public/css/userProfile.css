@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+:root {
+    --ourwhite: #feffff;
+    --accent: #def2f1;
+    --semiDarkBlue: #3AAFA9;
+    --darkBlue: #2b7a78;
+    --dark: #17252a;
+}
+html, body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent);
+    height: 100%;
+    color: rgba(0, 0, 0, 0.5);
+  }
+ 
+  /* NAVBAR */
+.navbar {
+    overflow: hidden;
+    background-color: white;
+}
+
+.navbar a.navbutton {
+    color: black;
+    text-align: center;
+    padding: 30px 5px;
+    text-decoration: none;
+    font-size: 25px;
+    float: right;
+    margin-right: 30px;
+    
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+.navbar a.name {
+    color: black;
+    text-align: center;
+    margin-left: 2.80px;
+    margin-top:27px; 
+    text-decoration: none;
+    font-size: 32px;
+    float: left;
+    font-weight: 1000;
+
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+
+.navbar img {
+    height: 67px;
+    width: 67px;
+    padding-top: 12px;
+    padding-left: 25px;
+    border-radius: 50%;
+}
+
+.navbar a.logo {
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    
+}
+ 
+.navbar a.navbutton:hover {
+    background-color: var(--semiDarkBlue);
+    color: white;
+}
+
+.navbar input[type=text] {
+    font-size: 15px;
+    width: 600px;
+    height: 25px;
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+.navbar p{
+    bottom: 10px;
+}
+
+.navbar input[type=text] {
+    font-size: 15px;
+    width: 600px;
+    height: 25px;
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+.navbar p{
+    bottom: 10px;
+}
+
+.navbar .search-container {
+    margin-top: 20px;
+    display: flex;
+    float: none;
+  }
+  
+.navbar input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: 1px solid grey;
+}
+  
+.navbar .search-container button {
+    float: none;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: var(--darkBlue);
+    font-size: 17px;
+    border: var(--dark);
+    cursor: pointer;
+    color: var(--ourwhite);
+}
+  
+.navbar .search-container button:hover {
+    background: #22918d;
+}
+
+/* WEBPAGE CONTENT */
+.container{
+    margin-top: 20px;
+    height: auto;
+  
+}
+
+.content-container{
+    width: 1000px;
+    margin-left: 25%;
+    background-color: var(--ourwhite);
+    grid-template-columns: 250px 300px 1fr;
+    grid-template-rows: 250px 1fr;
+    display: grid;
+    height: auto;
+}
+
+.icon img{
+    padding: 20px;
+    width: 200px;
+    grid-column-start: 0;
+    grid-column-end: 1;
+    grid-row-start: 0;
+    grid-row-end: 1;
+}
+    
+
+.info{
+    margin-top: 60px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 0;
+    grid-row-end: 1;
+}
+
+.user-username{
+    font-size: 33px;
+}
+
+.bio{
+    display: block;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.follower-following{
+    margin-top: 10px;
+    display: block;
+}
+
+.follower-following a:link{
+    text-decoration:none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.follower-following a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.follower-following a:visited{
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.followers{
+    display: inline;;
+    font-size: 17px;
+}
+
+.following{
+    margin-left: 30px;
+    font-size: 17px;
+}
+
+.follow-btn{
+    margin-top: 160px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 0;
+    grid-row-end: 1;
+}
+
+#follow-btn{
+    padding: 10px 60px;
+    background-color: var(--semiDarkBlue);
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ourwhite);
+    border-radius: 30px;
+}
+
+.edit-btn{
+    padding: 10px 60px;
+    background-color: var(--semiDarkBlue);
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ourwhite);
+    border-radius: 30px;
+}
+
+.reviews{
+    margin-top: 10px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding-right: 40px;
+
+}
+
+.reviews ul {
+    width: 930px;
+    margin-right: 80px;
+    padding-right: 30px;
+    margin-top: 0px;
+    background-color: var(--ourwhite);
+}
+
+.reviews li {
+    padding-bottom: 15px;;
+    border-top: 1px solid black;
+    display: block;
+}
+
+.reviews-heading{
+    font-size: 20px;
+    margin-left: 40px;
+    font-weight: bold;
+    
+}
+
+.review-container{
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 27px 20px 1fr;
+    display: grid;
+    position: relative;
+
+}
+
+/* REVIEW CONTENT */
+.user-icon{
+    
+    grid-row-start: 0;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+}
+
+.user-icon img{
+    padding-top: 5px;
+    padding-left: 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+}
+
+.reviews .name{
+    margin-top: 5px;
+    
+    grid-row-start: 0;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+
+.del-btn{
+    
+    margin-top: 10px;
+    
+    grid-row-start: 0;
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.fa-trash{
+    font-size: 20px;
+}
+
+.name p{
+    display: inline;
+}
+
+.username{
+    font-weight: bold;
+}
+
+.course-review{
+    
+    grid-row-start: 1;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+
+.course-review p{   
+    display: inline;
+    font-weight: bold;
+}
+
+.user-review{
+    
+    grid-row-start: 2;
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+
+.user-review p{
+    margin-top: 5px;
+    font-size: 15px;
+
+}
+
+.review-likes{
+    
+    grid-row-start: 3;
+    grid-row-start: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.review-likes .likes{
+    font-size: 13px;
+}
+
+.fa-thumbs-up{
+    font-size: 20px;
+}
+
+.fa-solid{
+    color:var(--semiDarkBlue);
+    
+}
+
+.fa-regular{
+    color:var(--semiDarkBlue);
+    cursor: pointer;
+}
+
+.likes-form{
+    margin: 0px;
+}
+
+.like-btn{
+    
+    grid-row-start: 3;
+    grid-row-start: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.unlike-btn{
+    
+    grid-row-start: 3;
+    grid-row-start: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}

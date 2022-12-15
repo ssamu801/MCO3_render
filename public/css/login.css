@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+:root {
+    --ourwhite: #feffff;
+    --accent: #def2f1;
+    --semiDarkBlue: #3AAFA9;
+    --darkBlue: #2b7a78;
+    --dark: #17252a;
+}
+
+html, body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent);
+    height: 100%;
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+    overflow: hidden;
+    background-color: var(--ourwhite);
+}
+
+.navbar a.navbutton {
+    color: black;
+    text-align: center;
+    padding: 30px 5px;
+    text-decoration: none;
+    font-size: 25px;
+    float: right;
+    margin-right: 30px;
+    
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+.navbar a.name {
+    color: black;
+    text-align: center;
+    margin-left: 2.80px;
+    margin-top:27px; 
+    text-decoration: none;
+    font-size: 32px;
+    float: left;
+    font-weight: 1000;
+
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+
+.navbar img {
+    height: 67px;
+    width: 67px;
+    padding-top: 12px;
+    padding-left: 25px;
+    border-radius: 50%;
+}
+
+.navbar a.logo {
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    
+}
+ 
+.navbar a.navbutton:hover {
+    background-color: var(--semiDarkBlue);
+    color: var(--ourwhite);
+}
+
+/* LOGIN */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.error-message{
+    top: 200px;
+    text-align: center;
+    float: none;
+    position: absolute;
+    height: 50px;
+    width: 464px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    background-color: white;
+}
+
+.error-message p{
+    color: red;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 12px;
+}
+
+.login-box {
+    box-sizing: border-box;
+
+    width: 464px;
+    height: 567px;
+   
+    background: var(--ourwhite);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    display: flex;
+    padding-top: 66px;
+    padding-left: 55px;
+    padding-right: 51px;
+}
+
+.login-frame{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+
+
+.form label {
+    font-size: 20px;
+    color: #818181;
+}
+
+
+label.email-text {
+    padding-top: 35px;
+    
+}
+
+input {
+    padding-top: 5px;
+    
+    box-sizing: border-box;
+    width: 355px;
+    height: 39px;
+
+    border: 1px solid rgba(121, 119, 119, 0.4);
+    border-radius: 5px;
+}
+
+span.login {
+    font-weight: 600;
+    font-size: 32px;
+    
+    color: #818181;
+}
+
+span.login-text {
+    font-size: 24px;
+    color: var(--ourwhite);
+}
+
+span.need-acc {
+    margin-left: 75px;
+
+    align-self: center;
+    font-size: 16px;
+    color: #818181;
+}
+
+#login-form {
+    margin-top: 35px;
+}
+
+#login-password-div {
+    margin-top: 25px;
+}
+
+#button-div {
+    margin-top: 79px;
+}
+
+#login-button {
+    width: 353px;
+    height: 46px;
+
+    background: var(--semiDarkBlue);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: 0px;
+
+    margin-bottom: 25px;
+
+}
+
+
